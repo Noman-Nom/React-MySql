@@ -13,6 +13,7 @@ const CreateStudent = () => {
                 <label htmlFor="name">Email</label>
                 <input type="text" placeholder='enter email' id='email' onChange={()=>{}} />
             </div>
+            <button>Submit</button>
         </div>
     </div>
   )
