@@ -7,8 +7,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from 'axios';
+import {Link} from 'react-router-dom'
+import './Student.css'
 
 import { useEffect,useState } from "react";
+
+
 
 export default function Student() {
 
@@ -24,7 +28,9 @@ export default function Student() {
 
   return (
 
-    
+    <>
+  <Link to="/Create"> <button>ADD+</button></Link>
+ 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -35,6 +41,7 @@ export default function Student() {
             <TableCell align="right">ID</TableCell>
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Email</TableCell>
+            <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -49,10 +56,15 @@ export default function Student() {
               <TableCell align="right">{data.ID}</TableCell>
               <TableCell align="right">{data.name}</TableCell>
               <TableCell align="right">{data.email}</TableCell>
+              <TableCell align="right"><button className='btn'>View</button>
+              <button className='btn'>Delete</button>
+              </TableCell>
+              
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </>
   );
 }
