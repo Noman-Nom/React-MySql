@@ -8,49 +8,51 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import axios from 'axios';
 
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 
 export default function Student() {
+
+
+  const [student, setStudent] = useState([])
   React.useEffect(() => {
     axios.get('http://localhost:8081/')
-    .then(res=> console.log(res))
+    // .then(res=> console.log(res.data))
+    .then(res=> setStudent(res.data))
     .catch(err=>console.log(err));
     
   }, []);
 
   return (
 
-    <div></div>
-    // <TableContainer component={Paper}>
-    //   <Table sx={{ minWidth: 650 }} aria-label="simple table">
-    //     <TableHead>
-    //       <TableRow>
+    
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
           
             
             
-    //         <TableCell align="right">Fat&nbsp;(g)</TableCell>
-    //         <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-    //         <TableCell align="right">Protein&nbsp;(g)</TableCell>
-    //       </TableRow>
-    //     </TableHead>
-    //     <TableBody>
-    //       {res.map((s) => (
-    //         <TableRow
-    //           key="s"
-    //           sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-    //         >
-    //           <TableCell component="th" scope="row">
-                
-    //           </TableCell>
+            <TableCell align="right">ID</TableCell>
+            <TableCell align="right">Name</TableCell>
+            <TableCell align="right">Email</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {student.map((data,i) => (
+            <TableRow
+              key={i}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              
         
-        
-    //           <TableCell align="right">s</TableCell>
-    //           <TableCell align="right">u</TableCell>
-    //           <TableCell align="right">v</TableCell>
-    //         </TableRow>
-    //       ))}
-    //     </TableBody>
-    //   </Table>
-    // </TableContainer>
+        {console.log(data.name)}
+              <TableCell align="right">{data.ID}</TableCell>
+              <TableCell align="right">{data.name}</TableCell>
+              <TableCell align="right">{data.email}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 }
