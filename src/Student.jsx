@@ -29,7 +29,7 @@ export default function Student() {
   return (
 
     <>
-  <Link to="/Create"> <button>ADD+</button></Link>
+  <Link to="/create"> <button>ADD+</button></Link>
  
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
