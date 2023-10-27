@@ -26,6 +26,13 @@ export default function Student() {
     
   }, []);
 
+    const handleDelete = async (id)=>{
+          try {
+             await axios.delete('http://localhost:8081/students/'+id)
+          } catch (error) {
+            
+          }
+    }
   return (
 
     <>
@@ -57,8 +64,8 @@ export default function Student() {
               <TableCell align="right">{data.name}</TableCell>
               <TableCell align="right">{data.email}</TableCell>
               <TableCell align="right">
-               <Link to={`update/${data.id}`}><button className='btn'>Update</button></Link> 
-              <button className='btn'>Delete</button>
+               <Link to={`update/${data.ID}`}><button className='btn'>Update</button></Link> 
+              <button className='btn' onClick={e=> handleDelete(data.ID)}>Delete</button>
               </TableCell>
               
             </TableRow>
