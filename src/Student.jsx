@@ -56,7 +56,8 @@ export default function Student() {
               <TableCell align="right">{data.ID}</TableCell>
               <TableCell align="right">{data.name}</TableCell>
               <TableCell align="right">{data.email}</TableCell>
-              <TableCell align="right"><button className='btn'>View</button>
+              <TableCell align="right">
+               <Link to={`update/${data.id}`}><button className='btn'>Update</button></Link> 
               <button className='btn'>Delete</button>
               </TableCell>
               
